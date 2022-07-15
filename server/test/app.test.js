@@ -27,4 +27,12 @@ describe("API", () => {
         request(api).get("/flavours").expect("Content-Type", /json/, done);
     })
 
+    // it("Responds to a GET requrest at /flavours with a JSON object that has a flavours key", (done) => {
+    //     request(api).get("/flavours").end((err, res) => {
+    //         const data = res.body;
+
+    //         done();
+    //     });
+    // })
+
 })
