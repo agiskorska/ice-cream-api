@@ -10,13 +10,13 @@ describe("API", () => {
         // We start a version of the API that we can test on
         api = app.listen(3030);
     })
-
-    afterAll(() => {
-        api.close();
+    // done - callback from jest to confirm the tests are finished (not totally necessary here)
+    afterAll((done) => {
+        api.close(done);
     })
 
-    it("Responds to a GET requrest at / with a 200 status", () => {
-        request(api).get("/").expect(200)
+    it("Responds to a GET requrest at / with a 200 status", (done) => {
+        request(api).get("/").expect(200, done);
     })
 
 })
