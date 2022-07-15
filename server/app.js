@@ -1,5 +1,5 @@
 const express = require('express');
-
+const data = require('./data');
 // Create express
 const app = express();
 
@@ -11,9 +11,27 @@ app.get("/", (req, res) => {
 
 app.get("/flavours", (req, res) => {
     res.json({
-        flavours: ["strawberry, chocolate, vanilla"]
+        flavours: data.map(f => f.flavour)
     });
 });
 
+app.get("/flavours/:id", (req, res) => {
+    const id = req.params.id;
+    const filteredData = data.filter(f => f["id"] == id)
 
-module.exports = app;
+    // Handle errors
+    if (filteredData.length == 1) {
+        res.json({
+            flavour: filteredData[0]
+        })
+    } else {
+        res.status(404).json({
+            error: "No such ice cream"
+        })
+    }
+
+
+});
+
+
+module.exports = app;                                                  
