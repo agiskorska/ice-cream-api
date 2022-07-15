@@ -10,8 +10,13 @@ app.get("/", (req, res) => {
 });
 
 app.get("/flavours", (req, res) => {
+    let flavours = data;
+    
+    if (req.query.vegan) {
+        flavours = flavours.filter(f => f["vegan"])
+    }
     res.json({
-        flavours: data.map(f => f.flavour)
+        flavours: flavours.map(f => f.flavour)
     });
 });
 

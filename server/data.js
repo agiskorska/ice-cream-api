@@ -1,19 +1,23 @@
 const data = [
     {
         id: 1,
-        flavour: "pistachio"
+        flavour: "pistachio",
+        vegan: false
     },
     {
         id: 2,
-        flavour: "salted caramel"
+        flavour: "salted caramel",
+        vegan: true
     },
     {
         id: 4,
-        flavour: "vanila"
+        flavour: "vanila",
+        vegan: true
     },
     {
         id: 5,
-        flavour: "mint"
+        flavour: "mint",
+        vegan: false
     }
 ]
 
