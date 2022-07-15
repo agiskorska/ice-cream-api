@@ -1,8 +1,16 @@
 const express = require('express');
-const data = require('./data');
+const cors = require('cors')
+let data = require('./data');
+
+
 // Create express
 const app = express();
 
+// Middleware
+// Tell the app to listen to JSON bodies on POST requests
+app.use(express.json());
+// CORS - Add headers to each response, saying we're ok sharing this resource
+app.use(cors());
 
 // Set up routes
 app.get("/", (req, res) => {
@@ -37,6 +45,29 @@ app.get("/flavours/:id", (req, res) => {
 
 
 });
+
+app.post("/flavours", (req, res) => {
+    const newId = data.length + 1;
+    const newFlavour = req.body;
+    newFlavour.id = newId;
+    data.push(newFlavour);
+    res.status(201).json({
+        success: true
+    })
+})
+
+app.delete("/flavours/:id", (req,res) => {
+    const reqId = req.params.id;
+    const entry = data.filter(f => f.id == reqId)[0];
+    const index = entry.id;
+    
+    data.splice(index - 1, 1);
+    
+    res.status(200).json({
+        success: true,
+        removed: {...entry}
+    });
+})
 
 
 module.exports = app;                                                  

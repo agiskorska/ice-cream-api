@@ -10,6 +10,11 @@ const data = [
         vegan: true
     },
     {
+        id: 3,
+        flavour: "blueberry",
+        vegan: true
+    },
+    {
         id: 4,
         flavour: "vanila",
         vegan: true
