@@ -19,4 +19,12 @@ describe("API", () => {
         request(api).get("/").expect(200, done);
     })
 
+    it("Responds to a GET requrest at /flavours with a 200 status", (done) => {
+        request(api).get("/flavours").expect(200, done);
+    })
+
+    it("Responds to a GET requrest at /flavours with a JSON object", (done) => {
+        request(api).get("/flavours").expect("Content-Type", /json/, done);
+    })
+
 })

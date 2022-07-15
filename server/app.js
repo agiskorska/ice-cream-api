@@ -9,8 +9,10 @@ app.get("/", (req, res) => {
     res.send("welcome to the Ice Ceam API");
 });
 
-app.get("/cats", (req, res) => {
-    res.send("m_^^_m");
+app.get("/flavours", (req, res) => {
+    res.json({
+        flavours: ["strawberry, chocolate, vanilla"]
+    });
 });
 
 
